@@ -1,21 +1,26 @@
-file_name = "emails.txt"
+#file_name is now the arg passed to the function
+def rm_dupl_emails_from_file(file_name):
+    unique_emails = []
 
-duplicate_free_emails = []
+    with open(file_name) as file_object:
+        content = file_object.read()
 
-with open(file_name) as file_object:
-    content = file_object.read()
+    # print(content)
 
-# print(content)
+    emails = content.split(", ")
 
-emails = content.split(", ")
+    # print(emails)
 
-# print(emails)
+    for email in emails:
+        # changed a variable name here to make it more readable
+        if email not in emails:
+            unique_emails.append(email)
+    
+    # a return statement is used to make the function more versatile
+    # a print method can be called on any returned value
+    return unique_emails
 
-for email in emails:
-    if email not in duplicate_free_emails:
-        duplicate_free_emails.append(email)
-
-print(duplicate_free_emails)
+print(rm_dupl_emails_from_file("emails.txt"))
 
 
 
